@@ -2,7 +2,7 @@
 
 Some sample prompts and retrieved data for https://arxiv.org/abs/2503.00566 "Instructor-Worker Large Language Model System for Policy Recommendation: a Case Study on Air Quality Analysis of the January 2025 Los Angeles Wildfires", Gao et al. 2025. 
 
-Will add more updates as we work on this project. 
+Will add more updates as we work on this and related project. 
 
 ### Citation
 
