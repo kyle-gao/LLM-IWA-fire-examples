@@ -1,0 +1,4 @@
+{
+  "role": "user",
+  "content": "Generate a health recommendation based on the provided air quality summary. Focus on the overall conditions, not daily details. Begin immediately with the recommendation and exclude any additional commentary."
+}

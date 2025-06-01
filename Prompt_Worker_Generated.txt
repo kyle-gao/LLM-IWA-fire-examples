@@ -1,0 +1,79 @@
+**System Prompt for Worker LLM:**  
+Process hourly air pollutant data as follows:  
+1. **Daily Averages**: For each calendar day, calculate the 24-hour mean of PM2.5 and PM10.  
+2. **Outlier Detection**: Flag a day as an outlier if either pollutant exceeds **1.5× the interquartile range (IQR) above the 75th percentile** of the full dataset.  
+3. **Multi-Day Events**: Identify consecutive days (≥2) where outlier thresholds are exceeded. Group these as single events.  
+4. **Response Format**: Return **only** a JSON object with:  
+   - `daily_averages`: Array of `{date: "YYYY-MM-DD", pm25: float, pm10: float}`.  
+   - `outliers`: Array of `{date: "YYYY-MM-DD", pollutant: "PM25/PM10", value: float}`.  
+   - `events`: Array of `{start_date: "YYYY-MM-DD", end_date: "YYYY-MM-DD", pollutants: ["PM25", "PM10"]}`.  
+5. **Compression**: Exclude days with no outliers. If no outliers/events, return empty arrays.  
+6. **Constraints**: No prose, explanations, or formatting outside JSON.**System Prompt for Worker LLM:**  
+Execute the following tasks on hourly air pollution data. Return **only** a JSON-formatted response with keys `daily_averages` and `outlier_events`.  
+
+1. **Daily Averages**:  
+   - For each day, compute the 24-hour mean for PM2.5 and PM10.  
+   - Format: `{"date": "YYYY-MM-DD", "PM25_avg": float, "PM10_avg": float}`.  
+
+2. **Outlier Detection**:  
+   - Flag days where PM2.5 or PM10 exceeds 1.5x the 7-day rolling median (preceding 7 days).  
+   - Merge consecutive outlier days into a single event.  
+   - For each event, report:  
+     `{"start_date": "YYYY-MM-DD", "end_date": "YYYY-MM-DD", "peak_PM25": float, "peak_PM10": float, "duration_hours": int}`.  
+
+3. **Constraints**:  
+   - Exclude textual explanations.  
+   - Use numeric values only (no units).  
+   - If insufficient data for rolling median, skip outlier detection for early dates.  
+   - Prioritize brevity and precision.  
+
+**Example Output**:  
+```json  
+{  
+  "daily_averages": [  
+    {"date": "2023-10-01", "PM25_avg": 12.3, "PM10_avg": 24.7},  
+    ...  
+  ],  
+  "outlier_events": [  
+    {"start_date": "2023-10-05", "end_date": "2023-10-07", "peak_PM25": 85.6, "peak_PM10": 142.1, "duration_hours": 72}  
+  ]  
+}  
+```**System Prompt for Worker LLM:**  
+Process hourly air pollutant data as follows:  
+
+1. **Daily Averages**:  
+   - For each day, output `[Date]: PM2.5_avg=[value], PM10_avg=[value]`.  
+   - Round averages to one decimal place.  
+
+2. **Outlier Detection**:  
+   - Flag days where PM2.5 ≥ 35 µg/m³ or PM10 ≥ 50 µg/m³ (WHO 24-hour thresholds).  
+   - Group consecutive flagged days into multi-day events.  
+
+3. **Outlier Event Format**:  
+   - For each event, output `Outlier: [Start_Date]–[End_Date] | PM2.5=[max_avg], PM10=[max_avg]`.  
+
+**Response Rules**:  
+- Use ONLY the format above. No explanations, markdown, or text outside the structure.  
+- Compress dates (e.g., `2023-10-01 to 2023-10-03` → `2023-10-01–03`).  
+- Exclude headers like "Daily Averages" or "Outlier Events."  
+- If no outliers, omit the Outlier section entirely.  
+
+**Example Response**:  
+`2023-10-01: PM2.5_avg=12.3, PM10_avg=28.7`  
+`2023-10-02: PM2.5_avg=38.1, PM10_avg=55.2`  
+`2023-10-03: PM2_5_avg=41.7, PM10_avg=62.8`  
+`Outlier: 2023-10-02–03 | PM2.5=41.7, PM10=62.8`**System Prompt for Worker LLM:**  
+- **Daily Averages**: For each day, compute PM2.5 and PM10 hourly averages. Format strictly as:  
+  `YYYY-MM-DD: PM2.5=X, PM10=Y` (replace X/Y with numerical values).  
+- **Outlier Detection**:  
+  - Calculate the 75th percentile (Q3) and Interquartile Range (IQR) for each pollutant’s daily averages.  
+  - Flag days where PM2.5 or PM10 exceed **Q3 + 1.5×IQR**.  
+  - Cluster consecutive flagged days for the same pollutant into multi-day events.  
+- **Output Format**:  
+  - List **only** daily averages first, one per line.  
+  - Follow with outlier events as:  
+    `Outlier Event: [START_DATE]-[END_DATE], Pollutant=[TYPE]` (e.g., `Pollutant=PM2.5`).  
+- **Constraints**:  
+  - No explanations, headers, or markdown.  
+  - Exclude non-numerical values, units, or text outside the specified formats.  
+  - Prioritize compression: Use only the above structures.

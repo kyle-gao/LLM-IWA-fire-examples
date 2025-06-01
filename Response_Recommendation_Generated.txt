@@ -1,0 +1,32 @@
+**Air Quality Report & Policy Recommendations: Wildfire Impact Analysis**  
+
+**Key Findings:**  
+1. **Severe Pollution Episodes:** Extreme PM2.5/PM10 spikes (e.g., peaks of 452–509 µg/m³ on 1/10–1/12) coincided with wildfires, far exceeding WHO guidelines (24-hour PM2.5 limit: 15 µg/m³).  
+2. **Prolonged Exposure:** Elevated PM2.5/PM10 levels persisted for weeks (e.g., PM10 >70 µg/m³ on 1/21; PM2.5 >25 µg/m³ recurrently), indicating chronic air quality degradation.  
+3. **Recurring Outliers:** Hourly PM2.5/PM10 peaks (e.g., 30.1 µg/m³ PM2.5 on 1/31; 108.05 µg/m³ PM10 on 1/23) suggest ongoing intermittent wildfire activity or secondary dust dispersion.  
+
+---
+
+**Policy Recommendations**  
+1. **Emergency Response Framework:**  
+   - **Real-Time Alerts:** Deploy automated SMS/APP alerts during spikes, prioritizing vulnerable groups (asthmatics, elderly).  
+   - **Masks & Clean Air Shelters:** Distribute N95 masks and designate public buildings with HEPA filtration as emergency shelters.  
+
+2. **Wildfire Mitigation:**  
+   - **Controlled Burns:** Implement pre-fire season managed burns to reduce fuel loads.  
+   - **Early Detection:** Invest in satellite/ground sensor networks for rapid wildfire detection and containment.  
+
+3. **Health Infrastructure:**  
+   - **Hospital Preparedness:** Stockpile respiratory medications and expand ICU capacity during fire seasons.  
+   - **Public Awareness:** Launch campaigns on PM2.5 health risks (e.g., lung/heart disease) and protective measures.  
+
+4. **Long-Term Air Quality Management:**  
+   - **Stricter Emission Controls:** Regulate agricultural/industrial burning during dry seasons.  
+   - **Green Buffers:** Plant fire-resistant vegetation around urban areas to reduce particulate drift.  
+
+5. **Climate Resilience:**  
+   - **Drought Management:** Promote water conservation policies to mitigate wildfire-prone conditions.  
+   - **Cross-Regional Collaboration:** Coordinate with neighboring regions on wildfire response and air quality monitoring.  
+
+---  
+**Conclusion:** The data underscores urgent needs for adaptive policies combining immediate public health protections with long-term wildfire prevention. Proactive investment in detection, community resilience, and emission reduction can mitigate future crises.

@@ -1,0 +1,10 @@
+{
+    "role": "user",
+    "content": (
+        "You are an AI assistant for the Los Angeles Fire Department. "
+        "Based on the air quality summary from the wildfire in the Palisades and Eaton neighborhoods, "
+        "generate a clear health recommendation for the general public. "
+        "Focus on the overall situation, not daily specifics. "
+        "Start directly with the recommendation without extra commentary."
+    )
+}
